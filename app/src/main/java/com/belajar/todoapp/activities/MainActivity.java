@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -76,11 +77,13 @@ public class MainActivity extends AppCompatActivity {
             public void onUpdate(DataItem task) {
                 startActivity(new Intent(
                         MainActivity.this,
-                        TaskActivity.class));
+                        TaskActivity.class).putExtra("DATA", task));
             }
 
             @Override
             public void onDelete(DataItem task) {
+                viewModel.deleteTask(task);
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
 
             }
 

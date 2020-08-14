@@ -78,7 +78,17 @@ public class TaskViewModel extends  BaseViewModel{
         });
     }
     public void deleteTask(DataItem todos){
-        ClientUtil.client(TaskService.class, TaskRepository.BASE_URL).deleteTask(todos.getId());
+        ClientUtil.client(TaskService.class, TaskRepository.BASE_URL).deleteTask(todos.getId()).enqueue(new Callback<TaskModel>() {
+            @Override
+            public void onResponse(Call<TaskModel> call, Response<TaskModel> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<TaskModel> call, Throwable t) {
+
+            }
+        });
     }
     public void updateStatus(DataItem task, Boolean status){
         if (status) {

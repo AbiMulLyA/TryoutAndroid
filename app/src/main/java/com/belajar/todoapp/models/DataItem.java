@@ -1,8 +1,11 @@
 package com.belajar.todoapp.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class DataItem{
+public class DataItem implements Parcelable {
 
 	@SerializedName("createdAt")
 	private String createdAt;
@@ -18,6 +21,26 @@ public class DataItem{
 
 	@SerializedName("updatedAt")
 	private String updatedAt;
+
+	protected DataItem(Parcel in) {
+		createdAt = in.readString();
+		task = in.readString();
+		id = in.readInt();
+		status = in.readByte() != 0;
+		updatedAt = in.readString();
+	}
+
+	public static final Creator<DataItem> CREATOR = new Creator<DataItem>() {
+		@Override
+		public DataItem createFromParcel(Parcel in) {
+			return new DataItem(in);
+		}
+
+		@Override
+		public DataItem[] newArray(int size) {
+			return new DataItem[size];
+		}
+	};
 
 	public void setCreatedAt(String createdAt){
 		this.createdAt = createdAt;
@@ -61,5 +84,19 @@ public class DataItem{
 
 	public String getUpdatedAt(){
 		return updatedAt;
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel parcel, int i) {
+		parcel.writeString(createdAt);
+		parcel.writeString(task);
+		parcel.writeInt(id);
+		parcel.writeByte((byte) (status ? 1 : 0));
+		parcel.writeString(updatedAt);
 	}
 }

@@ -1,50 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.TaskActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvData"
+    <data>
+        <variable
+            name="data"
+            type="com.belajar.todoapp.models.DataItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_goneMarginStart="10dp"
-        app:layout_goneMarginEnd="10dp"
-        android:hint="Task Anda"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etData"
+        android:layout_height="match_parent"
+        tools:context=".activities.TaskActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tambah Data"
-            android:imeOptions="actionSearch"
-            android:inputType="textCapWords"
-            android:textSize="@dimen/text_default"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorAccent"
-        android:text="Create"
-        android:textSize="@dimen/text_default"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvData"
-        app:layout_constraintVertical_bias="0.003" />
+            android:layout_marginTop="10dp"
+            app:boxBackgroundColor="@color/white"
+            app:layout_goneMarginStart="10dp"
+            app:layout_goneMarginEnd="10dp"
+            android:hint="Task Anda"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.046">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Update Data"
+                android:imeOptions="actionSearch"
+                android:inputType="textCapWords"
+                android:textSize="@dimen/text_default" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorAccent"
+            android:text="UPDATE"
+            android:textSize="@dimen/text_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.947"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvData"
+            app:layout_constraintVertical_bias="0.003" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
