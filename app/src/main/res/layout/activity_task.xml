@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.TaskActivity">
 
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,8 +21,16 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046" />
-
+        app:layout_constraintVertical_bias="0.046">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tambah Data"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapWords"
+            android:textSize="@dimen/text_default"/>
+    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnData"
         android:layout_width="wrap_content"

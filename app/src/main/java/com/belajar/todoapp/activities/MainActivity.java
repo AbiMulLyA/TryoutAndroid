@@ -86,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStatus(DataItem task, boolean status) {
-                viewModel.updateTask(task, status);
+                viewModel.updateStatus(task, status);
+                reload();
             }
         });
     }
@@ -95,5 +96,10 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
 
         binding = null;
+    }
+
+    public void reload(){
+        finish();
+        startActivity(getIntent());
     }
 }

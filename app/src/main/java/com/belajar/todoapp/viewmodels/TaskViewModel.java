@@ -20,7 +20,6 @@ import retrofit2.Response;
 public class TaskViewModel extends  BaseViewModel{
     private MutableLiveData <List<DataItem>> tasks =new MutableLiveData<>();
     private List<DataItem> temp = new ArrayList<>();
-    private static final String BASE_URL = "https://online-course-todo.herokuapp.com/";
 
     public void fetchTasks(){
         isLoading.setValue(true);
@@ -68,7 +67,7 @@ public class TaskViewModel extends  BaseViewModel{
         }
     }
     public void updateTask(DataItem task){
-        ClientUtil.client(TaskService.class, BASE_URL).updateTask(task.getId(), task).enqueue(new Callback<TaskModel>() {
+        ClientUtil.client(TaskService.class, TaskRepository.BASE_URL).updateTask(task.getId(), task).enqueue(new Callback<TaskModel>() {
             @Override
             public void onResponse(Call<TaskModel> call, retrofit2.Response<TaskModel> response) {
             }
@@ -79,15 +78,25 @@ public class TaskViewModel extends  BaseViewModel{
         });
     }
     public void deleteTask(DataItem todos){
-        ClientUtil.client(TaskService.class, BASE_URL).deleteTask(todos.getId());
+        ClientUtil.client(TaskService.class, TaskRepository.BASE_URL).deleteTask(todos.getId());
     }
-    public void updateTask(DataItem task, Boolean status){
-        if (status){
+    public void updateStatus(DataItem task, Boolean status){
+        if (status) {
             task.setStatus(false);
-        }else {
+        } else {
             task.setStatus(true);
         }
-        ClientUtil.client(TaskService.class, BASE_URL).updateStatus(task.getId(), task);
+        ClientUtil.client(TaskService.class, TaskRepository.BASE_URL).updateStatus(task.getId(), task).enqueue(new Callback<TaskModel>() {
+            @Override
+            public void onResponse(Call<TaskModel> call, Response<TaskModel> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<TaskModel> call, Throwable t) {
+
+            }
+        });
     }
     public MutableLiveData <List<DataItem>> getTasks() {
         return tasks;

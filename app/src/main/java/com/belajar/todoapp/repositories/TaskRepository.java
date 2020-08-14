@@ -4,7 +4,7 @@ import com.belajar.todoapp.utils.ClientUtil;
 
 public class TaskRepository {
 
-    private static final String BASE_URL = "https://online-course-todo.herokuapp.com/";
+    public static final String BASE_URL = "https://online-course-todo.herokuapp.com/";
 
     public TaskService service;
 
